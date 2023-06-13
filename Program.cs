@@ -1,9 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using Dashboard_APi.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// conectamos a la base de datos con la config de appsettings / connectionString / PostgreSQLConnection
+
+var connectionStrings = builder.Configuration.GetConnectionString("PostgreSQLConnection");
+builder.services.addContext<DashboardDB>(options =>
+options.UseNpsql(connectionStrings));
 
 var app = builder.Build();
 

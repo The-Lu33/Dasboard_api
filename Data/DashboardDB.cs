@@ -4,7 +4,7 @@ namespace Dashboard_APi.Data
 {
     public class DashboardDB : DBContext
     {
-        public DashboardDBt(DBContext])
+        public DashboardDBt(DbContextOptions<officeDb> options);
         public DbSet<Users> User => set<Users>();
     }
 }
